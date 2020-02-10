@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-
+import { Link } from "react-router-dom";
 const data = [
   {
     id: 0,
@@ -86,7 +86,7 @@ const CategoryOverlay = styled.div`
     font-weight: 700;
   }
 `;
-const Categories = () => {
+const Categories = props => {
   const [isHovering, setHovering] = useState(false);
   const [currentSelected, setSelected] = useState(false);
 
@@ -106,17 +106,19 @@ const Categories = () => {
     <CategoriesWrapper>
       {data.map((item, i) => {
         return (
-          <CategoryItem
-            key={i}
-            id={item.id}
-            image={item.image}
-            onMouseEnter={e => hoveringHandler(true, item.id)}
-            onMouseOut={e => hoveringHandler(false, item.id)}
-          >
-            {isHovering &&
-              currentSelected === item.id &&
-              renderOverlay(item.title)}
-          </CategoryItem>
+          <Link to={`/categories/${item.id}`}>
+            <CategoryItem
+              key={i}
+              id={item.id}
+              image={item.image}
+              onMouseEnter={e => hoveringHandler(true, item.id)}
+              onMouseOut={e => hoveringHandler(false, item.id)}
+            >
+              {isHovering &&
+                currentSelected === item.id &&
+                renderOverlay(item.title)}
+            </CategoryItem>
+          </Link>
         );
       })}
     </CategoriesWrapper>
