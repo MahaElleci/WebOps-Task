@@ -1,86 +1,124 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import ItemsListing from "./ItemsListing";
+
 const data = [
   {
+    id: 0,
     image:
       "https://cdn.sallysbakingaddiction.com/wp-content/uploads/2020/01/homemade-2-tier-wedding-cake-2.jpg",
     title: "Wedding Cake"
   },
   {
+    id: 1,
+    image:
+      "https://images-na.ssl-images-amazon.com/images/I/61LAZSQHPaL._AC_SL1098_.jpg",
+    title: "Venues"
+  },
+  {
+    id: 2,
+    image:
+      "https://cdn.sallysbakingaddiction.com/wp-content/uploads/2020/01/homemade-2-tier-wedding-cake-2.jpg",
+    title: "Decorations"
+  },
+  {
+    id: 3,
     image:
       "https://cdn.sallysbakingaddiction.com/wp-content/uploads/2020/01/homemade-2-tier-wedding-cake-2.jpg",
     title: "Wedding Cake"
   },
   {
+    id: 4,
     image:
-      "https://cdn.sallysbakingaddiction.com/wp-content/uploads/2020/01/homemade-2-tier-wedding-cake-2.jpg",
-    title: "Wedding Cake"
+      "https://images-na.ssl-images-amazon.com/images/I/61LAZSQHPaL._AC_SL1098_.jpg",
+    title: "Venues"
   },
   {
+    id: 5,
     image:
       "https://cdn.sallysbakingaddiction.com/wp-content/uploads/2020/01/homemade-2-tier-wedding-cake-2.jpg",
-    title: "Wedding Cake"
-  },
-  {
-    image:
-      "https://cdn.sallysbakingaddiction.com/wp-content/uploads/2020/01/homemade-2-tier-wedding-cake-2.jpg",
-    title: "Wedding Cake"
-  },
-  {
-    image:
-      "https://cdn.sallysbakingaddiction.com/wp-content/uploads/2020/01/homemade-2-tier-wedding-cake-2.jpg",
-    title: "Wedding Cake"
+    title: "Decorations"
   }
 ];
 const CategoriesWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 3fr; 
-  row-gap: 30px;
-  margin-top:8rem;
-  margin-bottom: 4rem;
+  grid-template-columns: auto auto auto;
+  margin-top: 5rem;
+  column-gap: 10px;
+  row-gap: 10px;
 `;
-
-const SideFilters = styled.div`
+const CategoryItem = styled.div`
+  background: ${props => `url(${props.image})`};
+  background-repeat: no-repeat;
+  height: 230px;
+  background-size: cover;
+  width: 350px;
+  background-position: center;
+  position: relative;
   display: flex;
-  flex-direction: column;
-`;
-const ButtonGroup = styled.div`
-  display: flex; 
-  margin-bottom:2rem; 
-  button {
-    background-color: #fff;
-    color: #000;
-    border: 1px solid #000;
-    width: 80px;
-    height: 20px;
-    margin-right:0.5rem;
-    &:hover {
-      background-color: #000;
-      color: #fff; 
-      cursor: pointer;
-    }
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    cursor: pointer;
   }
 `;
-const SearchInput = styled.input`
-  border: 1px solid #000; 
-  padding: 0.5rem;
-  &:focus {
-    outline: none;
+
+const CategoryOverlay = styled.div`
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  width: 275px;
+  height: 185px;
+  background-color: #fff;
+  position: absolute;
+  z-index: 10;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadein 1s;
+  p {
+    color: #000;
+    font-weight: 700;
   }
 `;
 const Categories = () => {
+  const [isHovering, setHovering] = useState(false);
+  const [currentSelected, setSelected] = useState(false);
+
+  const hoveringHandler = (show, itemId) => {
+    setHovering(show);
+    setSelected(itemId);
+  };
+
+  const renderOverlay = title => {
+    return (
+      <CategoryOverlay>
+        <p>{title}</p>
+      </CategoryOverlay>
+    );
+  };
   return (
     <CategoriesWrapper>
-      <SideFilters>
-        <ButtonGroup>
-          <button>Filter</button>
-          <button>Search</button>
-        </ButtonGroup>
-        <SearchInput type="text" placeholder="Search" />
-      </SideFilters>
-
-      <ItemsListing data={data} />
+      {data.map((item, i) => {
+        return (
+          <CategoryItem
+            key={i}
+            id={item.id}
+            image={item.image}
+            onMouseEnter={e => hoveringHandler(true, item.id)}
+            onMouseOut={e => hoveringHandler(false, item.id)}
+          >
+            {isHovering &&
+              currentSelected === item.id &&
+              renderOverlay(item.title)}
+          </CategoryItem>
+        );
+      })}
     </CategoriesWrapper>
   );
 };

@@ -14,7 +14,7 @@ const ItemImage = styled.div`
   background: ${props => `url(${props.image})`};
   background-repeat: no-repeat;
   height: 300px;
-  background-size: contain;
+  background-size: cover;
   width: 200px;
   background-position: center;
 `;

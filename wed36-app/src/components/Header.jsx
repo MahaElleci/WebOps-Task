@@ -4,17 +4,19 @@ import styled from "styled-components";
 const Nav = styled.div`
   background-color: #fff;
   position: fixed;
-  top:0;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 100000;
 `;
 const NavHeader = styled.div`
   display: flex;
   align-items: center;
   margin: 0 auto;
   justify-content: center;
+  margin-top: 2rem;
 `;
 const NavCenter = styled.div`
-  width: 33.333%;
-  text-align: center;
   img {
     max-height: 80px;
   }
@@ -27,7 +29,7 @@ const Dropdown = styled.div`
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   width: max-content;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
   a {
     padding: 1rem;
     border-bottom: 1px solid #000;
@@ -49,13 +51,13 @@ const MenuLink = styled.div`
   margin-right: 3rem;
   text-decoration: none;
   color: #000;
-  font-weight: 600;
+  font-weight: 700;
   text-align: center;
-  position: relative;  
+  position: relative;
   font-size: 0.9rem;
   white-space: pre;
   &:hover {
-      cursor: pointer;
+    cursor: pointer;
   }
 `;
 
@@ -71,8 +73,9 @@ const Header = () => {
       <NavHeader>
         <MenuLinkWrapper>
           <MenuLink
-            onMouseOver={e => dropdownHandler(e, true)}
-            onMouseLeave={e => dropdownHandler(e, false)}>
+            onMouseOverCapture={e => dropdownHandler(e, true)}
+            onMouseOut={e => dropdownHandler(e, false)}
+          >
             360 PLANNER
             {dropdownShown && (
               <Dropdown>
@@ -82,16 +85,16 @@ const Header = () => {
               </Dropdown>
             )}
           </MenuLink>
-          <MenuLink>HIM</MenuLink> 
-          <MenuLink>HER</MenuLink> 
+          <MenuLink>HIM</MenuLink>
+          <MenuLink>HER</MenuLink>
         </MenuLinkWrapper>
         <NavCenter>
           <img src="https://weds360.com/assets/logo-a44ab28137d9c6c366386172e63d31ba35dfd616b594a0b39e1f5d45a3130973.png" />
         </NavCenter>
         <MenuLinkWrapper>
           <MenuLink>VENDORS</MenuLink>
-          <MenuLink>GALLERY</MenuLink> 
-          <MenuLink>IDEAS & MORE</MenuLink> 
+          <MenuLink>GALLERY</MenuLink>
+          <MenuLink>IDEAS & MORE</MenuLink>
         </MenuLinkWrapper>
       </NavHeader>
     </Nav>

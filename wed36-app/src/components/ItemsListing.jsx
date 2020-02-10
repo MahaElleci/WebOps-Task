@@ -2,12 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import PhotoItem from "../components/PhotoItem";
 
-
 const ItemsListingWrapper = styled.div`
   display: grid;
-  grid-template-columns: auto auto auto;  
+  grid-template-columns: 300px 300px 300px;
 `;
-const ItemsListing = (props) => {
+const ItemsListing = props => {
   return (
     <ItemsListingWrapper>
       {props.data.map((item, i) => {
