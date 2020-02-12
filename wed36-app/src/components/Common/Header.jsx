@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-
+import { Link } from "react-router-dom";
 const Nav = styled.div`
   background-color: #fff;
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
-  z-index: 100000; 
-  width: 100%; 
+  z-index: 100000;
+  width: 100%;
 `;
 const NavHeader = styled.div`
   display: flex;
@@ -30,24 +30,26 @@ const Dropdown = styled.div`
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   width: max-content;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   a {
     padding: 1rem;
     border-bottom: 1px solid #000;
-    font-weight: 600;
+    font-weight: 700;
     background-color: #fff;
+    color: #000;
+    text-decoration: none;
   }
 `;
 const MenuLinkWrapper = styled.div`
   display: flex;
   padding: 0.8rem;
   border-top: 1px solid #000;
-  border-bottom: 1px solid #000; 
+  border-bottom: 1px solid #000;
   flex-wrap: wrap;
 `;
 const MenuLink = styled.div`
   margin-left: 3rem;
-  margin-right: 3rem; 
+  margin-right: 3rem;
   padding-bottom: 0.5rem;
   text-decoration: none;
   color: #000;
@@ -55,19 +57,18 @@ const MenuLink = styled.div`
   text-align: center;
   position: relative;
   font-size: 0.9rem;
-  white-space: pre; 
-  display:flex;
+  white-space: pre;
+  display: flex;
   &:hover {
-    cursor: pointer; 
+    cursor: pointer;
     text-decoration: underline;
-    opacity:0.9;
+    opacity: 0.9;
   }
 `;
 
 const Header = () => {
   const [dropdownShown, showDropdown] = useState(false);
   const dropdownHandler = (e, isShown) => {
-    e.stopPropagation();
     showDropdown(isShown);
   };
 
@@ -76,15 +77,15 @@ const Header = () => {
       <NavHeader>
         <MenuLinkWrapper>
           <MenuLink
-            onMouseOverCapture={e => dropdownHandler(e, true)}
-            onMouseOut={e => dropdownHandler(e, false)}
+            onMouseEnter={e => dropdownHandler(e, true)}
+            onMouseLeave={e => dropdownHandler(e, false)}
           >
             360 PLANNER
             {dropdownShown && (
               <Dropdown>
-                <a>Page 1</a>
-                <a>Page 2</a>
-                <a>Page 3</a>
+                <a href="#">Weddings</a>
+                <a href="#">Hotels</a>
+                <a href="#">Decorations</a>
               </Dropdown>
             )}
           </MenuLink>
@@ -95,7 +96,9 @@ const Header = () => {
           <img src="https://weds360.com/assets/logo-a44ab28137d9c6c366386172e63d31ba35dfd616b594a0b39e1f5d45a3130973.png" />
         </NavCenter>
         <MenuLinkWrapper>
-          <MenuLink>VENDORS</MenuLink>
+          <Link to={"/categories"} style={{ textDecoration: "none" }}>
+            <MenuLink>Categories</MenuLink>
+          </Link>
           <MenuLink>GALLERY</MenuLink>
           <MenuLink>IDEAS & MORE</MenuLink>
         </MenuLinkWrapper>

@@ -5,7 +5,8 @@ const FooterWrapper = styled.div`
   background-color: #000;
   width: 100%;
   height:200px; 
-  position: relative; 
+  position: relative;  
+  margin-top:5rem;
   bottom:0;  
   right: 0;
   left: 0;
@@ -14,9 +15,8 @@ const FooterWrapper = styled.div`
 const Footer = () => {
     return ( 
     <footer>
-        <FooterWrapper>
+        <FooterWrapper/>
 
-        </FooterWrapper> 
         </footer>
     )
 }

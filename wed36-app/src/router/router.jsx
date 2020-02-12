@@ -11,9 +11,9 @@ const MainRouter = ({store}) => {
   return (
     <Provider store={store}>
       <Router>
-          <Route path="/" render={()=><MainLayout><GalleryPage/></MainLayout>} exact/>  
-          <Route path="/photo/:id" render={(props)=><MainLayout><GalleryItemPage {...props} /></MainLayout>} exact/> 
-          <Route path="/categories" render={()=> <MainLayout><Categories/></MainLayout>}/>
+          <Route path="/" render={(props)=><MainLayout {...props}><GalleryPage/></MainLayout>} exact/>  
+          <Route path="/photo/:id" render={(props)=><MainLayout {...props}><GalleryItemPage {...props} /></MainLayout>} exact/> 
+          <Route path="/categories" render={(props)=> <MainLayout {...props}><Categories/></MainLayout>}/>
       </Router>
     </Provider>
   );

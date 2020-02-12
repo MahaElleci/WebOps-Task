@@ -5,10 +5,11 @@ import { useSelector } from "react-redux";
 const ItemWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  margin-top: 10rem; 
-  margin-bottom: 5rem;
+  margin-bottom: 5rem; 
+  margin: 0 auto;
   flex-wrap: wrap;
-  flex: 0 65%;
+  flex: 0 65%; 
+  justify-content: space-between; 
   @media only screen and (max-width: 1722px) {
     flex: 0 95%;
   }
@@ -17,7 +18,7 @@ const ItemImage = styled.div`
   display: flex;
   max-width: 690px;
   max-height: 690px;
-  margin-right: 2rem;
+  margin-right: 1rem;
   img {
     width: 100%;
     height: auto;

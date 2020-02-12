@@ -4,7 +4,7 @@ import ItemsListing from "./ItemsListing";
 
 const CategoriesWrapper = styled.div`
   display: flex;
-  margin-top:10rem;
+ /* margin-top:10rem; */
   margin-bottom: 4rem; 
   justify-content: center;
 `;

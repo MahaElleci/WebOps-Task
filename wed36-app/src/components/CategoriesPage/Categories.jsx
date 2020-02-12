@@ -3,12 +3,11 @@ import styled from "styled-components";
 import { useSelector } from 'react-redux'; 
 
 const CategoriesWrapper = styled.div`
-  display: grid;
-  grid-template-columns: auto auto auto;
-  margin-top: 5rem;
-  column-gap: 10px;
-  row-gap: 10px; 
-  margin-top:10rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex: 0 0 33.333333%; 
+  justify-content:space-evenly;
+
 `;
 const CategoryItem = styled.div`
   background: ${props => `url(${props.image})`};
@@ -20,7 +19,8 @@ const CategoryItem = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; 
+  margin-bottom: 1rem;
   &:hover {
     cursor: pointer;
   }

@@ -24,7 +24,7 @@ const ItemTitle = styled.p`
 `;
 const PhotoItem = props => {
   return ( 
-    <Link to={`/photo/${props.id}`}>
+    <Link to={`/photo/${props.id}`} style={{ textDecoration: 'none' }}>
     <ItemWrapper>
       <ItemImage image={props.image} />
       <ItemTitle>{props.title}</ItemTitle>
