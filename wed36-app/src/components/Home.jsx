@@ -99,7 +99,7 @@ const SearchInput = styled.input`
     outline: none;
   }
 `;
-const Home = (props) => {
+const Home = () => {
   return (
     <CategoriesWrapper>
       <SideFilters>

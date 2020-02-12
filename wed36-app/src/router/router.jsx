@@ -9,8 +9,7 @@ const MainRouter = () => {
     <React.Fragment>
       <Router>
           <Route path="/" render={()=> <MainLayout subComponent={<Home/>}/>} exact/> 
-          <Route path="/categories" render={()=> <MainLayout subComponent={<Categories/>}/>} exact/> 
-          <Route path="/categories/:id" render={(props)=> <MainLayout subComponent={<Home {...props} />}/>}/>
+          <Route path="/categories" render={()=> <MainLayout subComponent={<Categories/>}/>}/>
       </Router>
     </React.Fragment>
   );
