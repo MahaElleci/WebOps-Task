@@ -1,50 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useSelector } from 'react-redux'; 
 
-const data = [
-  {
-    id: 0,
-    image:
-      "https://cdn.sallysbakingaddiction.com/wp-content/uploads/2020/01/homemade-2-tier-wedding-cake-2.jpg",
-    title: "Wedding Cake"
-  },
-  {
-    id: 1,
-    image:
-      "https://images-na.ssl-images-amazon.com/images/I/61LAZSQHPaL._AC_SL1098_.jpg",
-    title: "Venues"
-  },
-  {
-    id: 2,
-    image:
-      "https://cdn.sallysbakingaddiction.com/wp-content/uploads/2020/01/homemade-2-tier-wedding-cake-2.jpg",
-    title: "Decorations"
-  },
-  {
-    id: 3,
-    image:
-      "https://cdn.sallysbakingaddiction.com/wp-content/uploads/2020/01/homemade-2-tier-wedding-cake-2.jpg",
-    title: "Wedding Cake"
-  },
-  {
-    id: 4,
-    image:
-      "https://images-na.ssl-images-amazon.com/images/I/61LAZSQHPaL._AC_SL1098_.jpg",
-    title: "Venues"
-  },
-  {
-    id: 5,
-    image:
-      "https://cdn.sallysbakingaddiction.com/wp-content/uploads/2020/01/homemade-2-tier-wedding-cake-2.jpg",
-    title: "Decorations"
-  }
-];
 const CategoriesWrapper = styled.div`
   display: grid;
   grid-template-columns: auto auto auto;
   margin-top: 5rem;
   column-gap: 10px;
-  row-gap: 10px;
+  row-gap: 10px; 
+  margin-top:10rem;
 `;
 const CategoryItem = styled.div`
   background: ${props => `url(${props.image})`};
@@ -89,7 +53,8 @@ const CategoryOverlay = styled.div`
 const Categories = () => {
   const [isHovering, setHovering] = useState(false);
   const [currentSelected, setSelected] = useState(false);
-
+   
+  const data = useSelector(state => state);
   const hoveringHandler = (show, itemId) => {
     setHovering(show);
     setSelected(itemId);
@@ -104,7 +69,7 @@ const Categories = () => {
   };
   return (
     <CategoriesWrapper>
-      {data.map((item, i) => {
+      {data.categoreisItems.map((item, i) => {
         return (
           <CategoryItem
             key={i}

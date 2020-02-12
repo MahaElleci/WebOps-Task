@@ -3,10 +3,10 @@ import MainRouter from "./router/router";
 
 import './App.css';
 
-function App() {
+function App( {store} ) {
   return (
-    <div className="App">
-       <MainRouter/>
+    <div className="grid-container">
+       <MainRouter store={store}/>
     </div>
   );
 }

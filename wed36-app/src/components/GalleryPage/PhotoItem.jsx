@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-
+import {Link} from 'react-router-dom';
 const ItemWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;  
   &:hover {
       cursor: pointer;
   }
@@ -23,11 +23,13 @@ const ItemTitle = styled.p`
   font-weight: 600;
 `;
 const PhotoItem = props => {
-  return (
+  return ( 
+    <Link to={`/photo/${props.id}`}>
     <ItemWrapper>
       <ItemImage image={props.image} />
       <ItemTitle>{props.title}</ItemTitle>
-    </ItemWrapper>
+    </ItemWrapper> 
+    </Link>
   );
 };
 

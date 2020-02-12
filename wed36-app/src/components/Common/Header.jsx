@@ -7,7 +7,8 @@ const Nav = styled.div`
   top: 0;
   right: 0;
   left: 0;
-  z-index: 100000;
+  z-index: 100000; 
+  width: 100%; 
 `;
 const NavHeader = styled.div`
   display: flex;
@@ -39,25 +40,27 @@ const Dropdown = styled.div`
 `;
 const MenuLinkWrapper = styled.div`
   display: flex;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding: 0.8rem;
   border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #000; 
+  flex-wrap: wrap;
 `;
 const MenuLink = styled.div`
   margin-left: 3rem;
-  margin-right: 3rem;
+  margin-right: 3rem; 
+  padding-bottom: 0.5rem;
   text-decoration: none;
   color: #000;
   font-weight: 700;
   text-align: center;
   position: relative;
   font-size: 0.9rem;
-  white-space: pre;
+  white-space: pre; 
+  display:flex;
   &:hover {
-    cursor: pointer;
+    cursor: pointer; 
+    text-decoration: underline;
+    opacity:0.9;
   }
 `;
 
